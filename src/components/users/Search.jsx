@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export class Search extends Component {
   state = {
@@ -7,10 +8,11 @@ export class Search extends Component {
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  onSubmit(e) {
+  onSubmit = (e) => {
     e.preventDefault();
+    this.props.searchUsers(this.state.text);
     console.log(this.state.text);
-  }
+  };
   render() {
     return (
       <div>
