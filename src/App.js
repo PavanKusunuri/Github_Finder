@@ -36,7 +36,7 @@ class App extends Component {
 
   // Clear Users from state
   clearUsers = () => {
-    this.setState({ users: [], loaing: false });
+    this.setState({ users: [], loading: false });
   };
 
   // Set Alert
