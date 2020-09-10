@@ -12,10 +12,11 @@ import axios from "axios";
 import GithubState from "./context/github/GithubState";
 
 const App = () => {
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
-
-  // Get a single user
 
   //  get User Repos
   const getUserRepos = async (username) => {
@@ -59,7 +60,13 @@ const App = () => {
                 exact
                 path="/user/:login"
                 render={(props) => (
-                  <User {...props} getUserRepos={getUserRepos} user={user} />
+                  <User
+                    {...props}
+                    getUser={getUser}
+                    getUserRepos={getUserRepos}
+                    user={user}
+                    loading={loading}
+                  />
                 )}
               />
             </Switch>
